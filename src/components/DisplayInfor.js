@@ -1,5 +1,7 @@
 import React from "react";
 import './DisplayInfor.scss'
+import logo from './../logo.svg'
+
 
 class DisplayInfor extends React.Component {
 
@@ -22,7 +24,8 @@ class DisplayInfor extends React.Component {
                     <span onClick={() => this.handleShowHide()}> 
                         {this.state.isShowListUser ? "Hide list user": "Show list user"}
                 </span>
-            </div>
+                </div>
+                <img src={ logo } />
             <div> 
                 { this.state.isShowListUser &&
                     listUsers.map((user) => {
