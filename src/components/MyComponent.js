@@ -1,40 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddUserInfor from './AddUserInfor';
 import DisplayInfor from './DisplayInfor'
 
-class MyComponent extends React.Component {
-    state = {
-        listUsers: [
+// class MyComponent extends React.Component {
+//     state = {
+//         listUsers: [
+//             { id: 1, name: "thinh", age: 20 }, 
+//             { id: 2, name: "Thu", age: 16}
+//         ]
+//     }
+//     handleAddUser = (userObject) => {
+//         this.setState({
+//             listUsers: [...this.state.listUsers, userObject]
+
+//         })
+//     }
+//     handleDeleteUser = (userObject) => {
+//         let listUsersClone = this.state.listUsers; 
+//         listUsersClone = listUsersClone.filter((item) => item.id !== userObject); 
+//         this.setState({
+//             listUsers: listUsersClone
+//         })
+//     }
+//     // JSX
+//     render() {
+//         return (
+//             <div>
+                // <AddUserInfor
+                // handleAddUser={this.handleAddUser}
+                // />
+                // <DisplayInfor listUsers={this.state.listUsers}
+                // handleDeleteUser = {this.handleDeleteUser}
+                // />
+//             </div>
+//         );
+//     }
+// }
+
+const MyComponent = (props) => {
+    const [listUsers, setListUsers] = useState( [
             { id: 1, name: "thinh", age: 20 }, 
             { id: 2, name: "Thu", age: 16}
-        ]
-    }
-    handleAddUser = (userObject) => {
-        this.setState({
-            listUsers: [...this.state.listUsers, userObject]
+        ])
 
-        })
+    const handleAddUser = (userObject) => {
+        setListUsers([...listUsers, userObject])
     }
-    handleDeleteUser = (userObject) => {
-        let listUsersClone = this.state.listUsers; 
+    const handleDeleteUser = (userObject) => {
+        let listUsersClone = listUsers; 
         listUsersClone = listUsersClone.filter((item) => item.id !== userObject); 
-        this.setState({
-            listUsers: listUsersClone
-        })
+        setListUsers(listUsersClone)
     }
-    // JSX
-    render() {
-        return (
-            <div>
-                <AddUserInfor
-                handleAddUser={this.handleAddUser}
+    return (
+        <div>
+            <AddUserInfor
+                handleAddUser={handleAddUser}
                 />
-                <DisplayInfor listUsers={this.state.listUsers}
-                handleDeleteUser = {this.handleDeleteUser}
+                <DisplayInfor listUsers={listUsers}
+                handleDeleteUser = {handleDeleteUser}
                 />
-            </div>
-        );
-    }
+        </div>
+        
+
+    )
 }
 
 export default MyComponent;
