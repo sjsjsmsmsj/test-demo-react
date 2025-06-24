@@ -90,8 +90,8 @@ const AddUserInfor = (props) => {
         event.preventDefault();
         props.handleAddUser({
             id: Math.floor((Math.random() * 100) + 1) + 'random',
-            name: this.state.name, 
-            age: this.state.age
+            name: name, 
+            age: age
         })
     }
 
@@ -103,19 +103,20 @@ const AddUserInfor = (props) => {
             event.target.value
         )
     }
+
     
     return (
                     <div>
                 My name is {name} and I'm from {age}
                 {/* <button onMouseOver={this.handleOnMoreOver}>Hover me</button> */}
-                <form onSubmit={(event) => this.handleOnSubmit(event)}>
+                <form onSubmit={(event) => handleOnSubmit(event)}>
                     <input type="text"
                         value= {name}
-                    onChange={(event) => {this.handleOnChangeInput(event)}}
+                    onChange={(event) => {handleOnChangeInput(event)}}
                     />
                                         <input type="text"
                         value= {age}
-                    onChange={(event) => {this.handleOnChangeAge(event)}}
+                    onChange={(event) => {handleOnChangeAge(event)}}
                     />
                     <button>Submit</button>
 
